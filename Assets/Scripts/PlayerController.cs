@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 0f;
-    public float jumpForce = 0f;
+    public float jumpVelocity = 0f;
 
     Rigidbody2D rb;
     Collider2D collider2d;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = Vector2.up * jumpVelocity;
         }
     }
 }

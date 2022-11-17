@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Collider2D collider2d;
 
-    private bool isGrounded;
-    private LayerMask whatIsGround;
+    public bool isGrounded;
+    public LayerMask whatIsGround;
 
     void Start()
     {

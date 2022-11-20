@@ -30,4 +30,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpVelocity;
         }
     }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
 }

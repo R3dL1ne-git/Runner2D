@@ -4,23 +4,57 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerController player;
+    //public PlayerController player;
 
-    Vector3 lastPosition;
-    float distanseToMove;
+    //Vector3 lastPosition;
+    //float distanseToMove;
 
-    void Start()
+    //void Start()
+    //{
+    //    player = FindObjectOfType<PlayerController>();
+    //    lastPosition = player.transform.position;
+    //}
+
+    //void Update()
+    //{
+    //    distanseToMove = player.transform.position.x - lastPosition.x;
+
+    //    transform.position = new Vector3(transform.position.x + distanseToMove, transform.position.y, transform.position.z);
+
+    //    lastPosition = player.transform.position;
+    //}
+
+    public Transform player;
+    public float movingSpeed;
+
+    private void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
-        lastPosition = player.transform.position;
+        if (player == null)
+        {
+            player = GameObject.Find("Player").transform;
+        }
+
+        transform.position = new Vector3()
+        {
+            x = player.position.x,
+            y = player.position.y,
+            z = player.position.z - 10
+        };
     }
 
-    void Update()
+    private void Update()
     {
-        distanseToMove = player.transform.position.x - lastPosition.x;
+        if (player)
+        {
+            Vector3 target = new Vector3()
+            {
+                x = player.position.x,
+                y = player.position.y,
+                z = player.position.z - 10
+            };
 
-        transform.position = new Vector3(transform.position.x + distanseToMove, transform.position.y, transform.position.z);
-
-        lastPosition = player.transform.position;
+            Vector3 pos = Vector3.Lerp(transform.position, target, movingSpeed * Time.deltaTime);
+            transform.position = pos;
+        }
     }
 }

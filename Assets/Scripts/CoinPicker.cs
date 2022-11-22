@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CoinPicker : MonoBehaviour
 {
-    private float coins = 0;
+    private int coins = 0;
     public TMP_Text cointText;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -11,6 +11,12 @@ public class CoinPicker : MonoBehaviour
         if(collision.gameObject.tag == "Coin")
         {
             coins++;
+            PlayerPrefs.SetInt("lastCoins", coins);
+
+            if (coins > PlayerPrefs.GetInt("coins", coins)) {
+                PlayerPrefs.SetInt("coins", coins);
+            }
+
             cointText.text = coins.ToString();
             Destroy(collision.gameObject);
         }

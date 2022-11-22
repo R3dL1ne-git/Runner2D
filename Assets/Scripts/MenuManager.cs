@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     
     public void PlayGame()
     {
+        PlayerPrefs.DeleteKey("lastCoins");
         SceneManager.LoadScene("SampleScene");
     }
 

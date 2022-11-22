@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CoinPicker : MonoBehaviour
+public class ItemPicker : MonoBehaviour
 {
     private int coins = 0;
     public TMP_Text cointText;
@@ -18,6 +18,11 @@ public class CoinPicker : MonoBehaviour
             }
 
             cointText.text = coins.ToString();
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "BoosterDoubleJump")
+        {
+            PlayerPrefs.SetInt("dj", 1);
             Destroy(collision.gameObject);
         }
     }

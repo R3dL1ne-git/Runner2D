@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if(collision.collider.tag == "Obstacle")
-        //{
-        //    gm.EndGame();    
-        //}
+        if (collision.collider.tag == "Obstacle")
+        {
+            gm.EndGame();
+        }
     }
 
     void Start()
@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviour
         gm = gameObject.AddComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<Collider2D>();
+        PlayerPrefs.SetInt("dj", 0);
     }
 
     void Update()
     {
+        Debug.Log(PlayerPrefs.GetInt("dj"));
         isGrounded = Physics2D.IsTouchingLayers(collider2d, whatIsGround);
 
         rb.velocity = new Vector2 (moveSpeed, rb.velocity.y);
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = Vector2.up * jumpVelocity;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && PlayerPrefs.GetInt("dj") == 1)
+        {
+            rb.velocity = Vector2.up * jumpVelocity;
+            PlayerPrefs.SetInt("dj", 0);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    private const float PLAY_DISTANCE_SPAWN_LEVEL_PART = 10f;
+    private const float PLAY_DISTANCE_SPAWN_LEVEL_PART = 15f;
 
     public Transform levelPart_Start;
     [SerializeField] public List<Transform> levelPartList;
@@ -26,7 +26,6 @@ public class LevelGeneration : MonoBehaviour
 
     private void Update()
     {
-        //if (Vector3.Distance(player.gameObject.transform.position, lastEndPosition) < PLAY_DISTANCE_SPAWN_LEVEL_PART)
         if (Vector3.Distance(player.GetPosition(), lastEndPosition) < PLAY_DISTANCE_SPAWN_LEVEL_PART)
         {
             SpawnLevelPart();

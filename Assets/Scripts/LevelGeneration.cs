@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    private const float PLAY_DISTANCE_SPAWN_LEVEL_PART = 15f;
+    private const float PLAY_DISTANCE_SPAWN_LEVEL_PART = 150f;
 
     public Transform levelPart_Start;
-    [SerializeField] public List<Transform> levelPartList;
-    [SerializeField] private PlayerController player;
+    public List<Transform> levelPartList;
+    public PlayerController player;
 
     private Vector3 lastEndPosition;
 
@@ -17,7 +16,7 @@ public class LevelGeneration : MonoBehaviour
     {
         lastEndPosition = levelPart_Start.Find("EndPosition").position;
         
-        int startingSpawnLevelParts = 5;
+        int startingSpawnLevelParts = 10;
         for (int i = 0; i < startingSpawnLevelParts; i++)
         {
             SpawnLevelPart();
@@ -27,7 +26,7 @@ public class LevelGeneration : MonoBehaviour
     private void Update()
     {
         if (Vector3.Distance(player.GetPosition(), lastEndPosition) < PLAY_DISTANCE_SPAWN_LEVEL_PART)
-        {
+        {          
             SpawnLevelPart();
         }
     }

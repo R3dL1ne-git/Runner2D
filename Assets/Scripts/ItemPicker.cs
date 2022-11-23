@@ -13,10 +13,11 @@ public class ItemPicker : MonoBehaviour
             coins++;
             PlayerPrefs.SetInt("lastCoins", coins);
 
-            if (coins > PlayerPrefs.GetInt("coins", coins)) {
-                PlayerPrefs.SetInt("coins", coins);
+            //if (coins > PlayerPrefs.GetInt("BestCoins", coins)) {
+            if (coins > PlayerPrefs.GetInt("BestCoins")) {
+                PlayerPrefs.SetInt("BestCoins", coins);
             }
-
+            Debug.Log(PlayerPrefs.GetInt("BestCoins"));
             cointText.text = coins.ToString();
             Destroy(collision.gameObject);
         }

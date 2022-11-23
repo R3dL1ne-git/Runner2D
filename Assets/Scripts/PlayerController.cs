@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(PlayerPrefs.GetInt("dj"));
         isGrounded = Physics2D.IsTouchingLayers(collider2d, whatIsGround);
 
         rb.velocity = new Vector2 (moveSpeed, rb.velocity.y);

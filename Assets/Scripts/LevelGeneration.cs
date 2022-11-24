@@ -16,7 +16,7 @@ public class LevelGeneration : MonoBehaviour
     {
         lastEndPosition = levelPart_Start.Find("EndPosition").position;
         
-        int startingSpawnLevelParts = 10;
+        int startingSpawnLevelParts = 2;
         for (int i = 0; i < startingSpawnLevelParts; i++)
         {
             SpawnLevelPart();
